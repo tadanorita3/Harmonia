@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonia - 統合失調症との闘いを支えた音楽</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- CSS: デザイン設定 --- */
+        :root {
+            --bg-color: #e8f5e9; /* 薄いミントグリーン */
+            --accent-color: #81c784; /* アクセントのグリーン */
+            --text-color: #445544; /* 文字色 */
+            --card-bg: #ffffff; /* カード背景 */
+            --spotify-color: #1DB954; /* Spotify色 */
+            --apple-color: #fa243c; /* Apple Music色 */
+            --youtube-color: #FF0000; /* YouTube色 */
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(#fff 10%, transparent 10%),
+                radial-gradient(#fff 10%, transparent 10%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            filter: brightness(0.95);
+        }
+
+        .hero-text {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .deco {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .post-section {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            width: 90%;
+        }
+
+        .post-section h3 {
+            text-align: center;
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button.submit-btn:hover { background-color: #66bb6a; }
+
+        .playlist-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::before, .section-title::after {
+            content: "🕊️";
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        /* サービスアイコン（右上の小さなマーク） */
+        .service-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            font-size: 1.1rem;
+        }
+        .service-spotify { color: var(--spotify-color); }
+        .service-apple { color: var(--apple-color); }
+        .service-youtube { color: var(--youtube-color); }
+
+        /* iframeの高さを統一 */
+        .card-iframe-container {
+            width: 100%;
+            height: 180px; /* 少し高さを確保 */
+            background: #eee;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+        
+        .card-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .card-artist {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .card-comment {
+            font-size: 0.9rem;
+            color: #555;
+            background: #f9fbe7;
+            padding: 10px;
+            border-radius: 8px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: #666;
+            background: rgba(255,255,255,0.5);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-icon">🎧</div>
+        <h1>私の希望のプレイリスト</h1>
+        <div class="subtitle">統合失調症との闘いを支えた音楽たち</div>
+        <div class="deco" style="top: 20px; left: 10%; font-size: 20px;">✨</div>
+        <div class="deco" style="top: 50px; right: 15%; font-size: 24px;">✨</div>
+    </header>
+
+    <div class="hero">
+        <img src="./assets/images/音楽を聴く女性.jpg" alt="音楽を聴く女性">
+        <div class="hero-text">
+            あなたは一人じゃない。<br>
+            これらの歌が私に勇気を与えてくれた。
+        </div>
+        <div class="deco" style="top: -20px; right: -10px;">🕊️</div>
+    </div>
+
+    <div class="post-section">
+        <h3>あなたの「支えになった曲」を教えてください</h3>
+        <form id="songForm">
+            <div class="form-group">
+                <label>曲のタイトル</label>
+                <input type="text" id="title" placeholder="例: Fight Song" required>
+            </div>
+            <div class="form-group">
+                <label>アーティスト名</label>
+                <input type="text" id="artist" placeholder="例: Rachel Platten" required>
+            </div>
+            <div class="form-group">
+                <label>曲のURL (Spotify / Apple Music / YouTube)</label>
+                <input type="url" id="url" placeholder="各アプリの「共有」リンクを貼り付け" required>
+                <small style="color:#888; font-size:0.8em;">※3つのサービスに対応しています</small>
+            </div>
+            <div class="form-group">
+                <label>ひとこと・思い出</label>
+                <textarea id="comment" rows="3" placeholder="辛いときにこの歌詞に救われました...など" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">投稿する</button>
+        </form>
+    </div>
+
+    <div class="playlist-container">
+        <h2 class="section-title">勇気をくれた曲たち</h2>
+        <div id="grid" class="grid">
+            </div>
+    </div>
+
+    <footer>
+        同じ空の下で、応援しています。<br>
+        © 2025 Harmonia. All rights reserved.
+    </footer>
+
+    <script>
+        // --- JavaScript: ロジック設定 ---
+
+        // サンプルデータ (3サービス分)
+        const initialSongs = [
+            {
+                title: "Fight Song",
+                artist: "Rachel Platten",
+                url: "https://open.spotify.com/track/6EJiVf7U0p1BBfs0qqeb1f?si=sample", // Spotify
+                comment: "誰がなんと言おうと、私は私のファイトソングを歌い続ける。その歌詞に何度も涙しました。"
+            },
+            {
+                title: "Brave",
+                artist: "Sara Bareilles",
+                url: "https://music.apple.com/jp/album/brave/636905589?i=636905658", // Apple Music
+                comment: "口に出して言う勇気。自分の殻を破る勇気。Apple Musicのリンクです。"
+            },
+            {
+                title: "Permission to Dance",
+                artist: "BTS",
+                url: "https://music.youtube.com/watch?v=CuklIb9d3fI&si=sample", // YouTube Music
+                comment: "「踊るのに許可はいらない」というメッセージに心が軽くなりました。YouTube Musicです。"
+            }
+        ];
+
+        // 1. サービス判定関数
+        function detectService(url) {
+            if (url.includes('spotify.com')) return 'spotify';
+            if (url.includes('music.apple.com')) return 'apple';
+            if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
+            return null;
+        }
+
+        // 2. 埋め込み用URL生成関数
+        function getEmbedUrl(url) {
+            const service = detectService(url);
+            
+            if (service === 'spotify') {
+                // Spotify: トラックIDを抽出して埋め込みURLを生成
+                const match = url.match(/track\/([a-zA-Z0-9]+)/);
+                if (match) return `https://open.spotify.com/embed/track/${match[1]}?utm_source=generator`;
+
+            } else if (service === 'apple') {
+                // Apple Music: ドメインを embed.music.apple.com に置換
+                return url.replace('music.apple.com', 'embed.music.apple.com');
+
+            } else if (service === 'youtube') {
+                // YouTube: 動画IDを抽出して埋め込みURLを生成
+                // (通常のURL, 短縮URL, YouTube MusicのURLに対応する正規表現)
+                const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+                if(match) return `https://www.youtube.com/embed/${match[1]}`;
+            }
+            return null; // 対応していないURLの場合
+        }
+
+        // 3. カードHTML生成関数
+        function createCard(song) {
+            const embedSrc = getEmbedUrl(song.url);
+            const service = detectService(song.url);
+            
+            // アイコンの出し分け
+            let iconHtml = '';
+            if (service === 'spotify') {
+                iconHtml = '<div class="service-badge service-spotify"><i class="fab fa-spotify"></i></div>';
+            } else if (service === 'apple') {
+                iconHtml = '<div class="service-badge service-apple"><i class="fab fa-apple"></i></div>';
+            } else if (service === 'youtube') {
+                iconHtml = '<div class="service-badge service-youtube"><i class="fab fa-youtube"></i></div>';
+            }
+
+            return `
+                <div class="card">
+                    ${iconHtml}
+                    <div class="card-iframe-container">
+                        ${embedSrc 
+                            ? `<iframe src="${embedSrc}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>` 
+                            : '<div style="padding:40px; text-align:center; color:#888;">Preview Unavailable</div>'}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${song.title}</div>
+                        <div class="card-artist">${song.artist}</div>
+                        <div class="card-comment">${song.comment}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 4. 描画関数
+        function renderSongs() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = ''; 
+            const storedSongs = JSON.parse(localStorage.getItem('myHopeSongs')) || initialSongs;
+            storedSongs.forEach(song => {
+                grid.innerHTML += createCard(song);
+            });
+        }
+
+        // 5. 投稿フォーム処理
+        document.getElementById('songForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const artist = document.getElementById('artist').value;
+            const url = document.getElementById('url').value;
+            const comment = document.getElementById('comment').value;
+
+            // バリデーション: 対応サービスかチェック
+            const service = detectService(url);
+            if (!service) {
+                alert('Spotify, Apple Music, または YouTube の正しい共有URLを入力してください。');
+                return;
+            }
+
+            const newSong = { title, artist, url, comment };
+            const currentSongs = JSON.parse(localStorage.getItem('myHopeSongs')) || initialSongs;
+            currentSongs.unshift(newSong);
+            localStorage.setItem('myHopeSongs', JSON.stringify(currentSongs));
+
+            this.reset();
+            renderSongs();
+            alert('投稿しました！あなたの勇気が誰かに届きますように。');
+        });
+
+        // 初回描画
+        renderSongs();
+    </script>
+</body>
+</html>
