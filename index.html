@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Harmonia - 心に寄り添う音楽の共有場所">
-    <meta property="og:description" content="統合失調症や心の辛さと闘う中で、私を支えてくれた音楽たち。あなたの勇気になった曲も、ここで教えてくれませんか？Spotify, Apple Music, YouTube対応。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tadanorita3.github.io/Harmonia/"> <meta property="og:image" content="https://tadanorita3.github.io/Harmonia/assets/images/%E9%9F%B3%E6%A5%BD%E3%82%92%E8%81%B4%E3%81%8F%E5%A5%B3%E6%80%A7.jpg"> 
-    <meta property="og:site_name" content="Harmonia">
-
-    <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Harmonia - 心に寄り添う音楽の共有場所">
+    <title>Harmonia - みんなで共有する音楽の場所</title>
+    
+    <meta property="og:title" content="Harmonia - みんなで共有する音楽の場所">
+    <meta property="og:description" content="統合失調症や心の辛さと闘う中で、私を支えてくれた音楽たち。Spotify, Apple Music, YouTube対応。">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harmonia - 心に寄り添う音楽の共有場所">
     <meta name="twitter:description" content="辛いとき、私を支えてくれた音楽をまとめました。統合失調症や心の不調と闘う人のための、優しく温かい音楽共有サイトです。">
     <meta name="twitter:image" content="https://tadanorita3.github.io/Harmonia/assets/images/%E9%9F%B3%E6%A5%BD%E3%82%92%E8%81%B4%E3%81%8F%E5%A5%B3%E6%80%A7.jpg">
-    <title>Harmonia - 統合失調症との闘いを支えた音楽</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        /* --- CSS: デザイン設定 --- */
+        /* --- CSS設定（以前と同じデザイン） --- */
         :root {
-            --bg-color: #e8f5e9; /* 薄いミントグリーン */
-            --accent-color: #81c784; /* アクセントのグリーン */
-            --text-color: #445544; /* 文字色 */
-            --card-bg: #ffffff; /* カード背景 */
-            --spotify-color: #1DB954; /* Spotify色 */
-            --apple-color: #fa243c; /* Apple Music色 */
-            --youtube-color: #FF0000; /* YouTube色 */
+            --bg-color: #e8f5e9;
+            --accent-color: #81c784;
+            --text-color: #445544;
+            --card-bg: #ffffff;
+            --spotify-color: #1DB954;
+            --apple-color: #fa243c;
+            --youtube-color: #FF0000;
         }
 
         body {
@@ -42,30 +42,10 @@
             background-attachment: fixed;
         }
 
-        header {
-            text-align: center;
-            padding: 2rem 1rem;
-            position: relative;
-        }
-
-        .header-icon {
-            font-size: 3rem;
-            color: var(--text-color);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            color: var(--text-color);
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
+        header { text-align: center; padding: 2rem 1rem; }
+        .header-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+        h1 { font-size: 1.5rem; margin: 0; color: var(--text-color); }
+        .subtitle { font-size: 0.9rem; opacity: 0.8; margin-top: 5px; }
 
         .hero {
             max-width: 800px;
@@ -74,7 +54,6 @@
             text-align: center;
             position: relative;
         }
-
         .hero img {
             width: 100%;
             height: 250px;
@@ -83,20 +62,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             filter: brightness(0.95);
         }
-
-        .hero-text {
-            margin-top: 1rem;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .deco {
-            position: absolute;
-            font-size: 1.5rem;
-            opacity: 0.7;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .hero-text { margin-top: 1rem; font-weight: bold; }
 
         .post-section {
             max-width: 600px;
@@ -106,13 +72,9 @@
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             width: 90%;
+            box-sizing: border-box;
         }
-
-        .post-section h3 {
-            text-align: center;
-            margin-top: 0;
-            color: var(--accent-color);
-        }
+        .post-section h3 { text-align: center; margin-top: 0; color: var(--accent-color); }
 
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; }
@@ -124,10 +86,7 @@
             font-family: inherit;
             box-sizing: border-box;
         }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
 
         button.submit-btn {
             width: 100%;
@@ -141,13 +100,9 @@
             transition: background 0.3s;
         }
         button.submit-btn:hover { background-color: #66bb6a; }
+        button.submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
 
-        .playlist-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        .playlist-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         .section-title {
             text-align: center;
             font-size: 1.3rem;
@@ -156,12 +111,7 @@
             display: inline-block;
             width: 100%;
         }
-        
-        .section-title::before, .section-title::after {
-            content: "🕊️";
-            margin: 0 10px;
-            font-size: 1.2rem;
-        }
+        .section-title::before, .section-title::after { content: "🕊️"; margin: 0 10px; font-size: 1.2rem; }
 
         .grid {
             display: grid;
@@ -179,10 +129,8 @@
             flex-direction: column;
             position: relative;
         }
-
         .card:hover { transform: translateY(-5px); }
 
-        /* サービスアイコン（右上の小さなマーク） */
         .service-badge {
             position: absolute;
             top: 10px;
@@ -196,44 +144,22 @@
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 10;
-            font-size: 1.1rem;
         }
         .service-spotify { color: var(--spotify-color); }
         .service-apple { color: var(--apple-color); }
         .service-youtube { color: var(--youtube-color); }
 
-        /* iframeの高さを統一 */
         .card-iframe-container {
             width: 100%;
-            height: 180px; /* 少し高さを確保 */
+            height: 180px;
             background: #eee;
             border-radius: 12px 12px 0 0;
             overflow: hidden;
         }
-        
-        .card-iframe-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .card-content {
-            padding: 15px;
-            flex-grow: 1;
-        }
-
-        .card-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .card-artist {
-            font-size: 0.9rem;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
+        .card-iframe-container iframe { width: 100%; height: 100%; border: none; }
+        .card-content { padding: 15px; flex-grow: 1; }
+        .card-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        .card-artist { font-size: 0.9rem; color: #777; margin-bottom: 10px; }
         .card-comment {
             font-size: 0.9rem;
             color: #555;
@@ -241,7 +167,17 @@
             padding: 10px;
             border-radius: 8px;
             line-height: 1.5;
+            white-space: pre-wrap;
         }
+        .card-date {
+            font-size: 0.75rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        /* ロード中の表示 */
+        #loadingMsg { text-align: center; width: 100%; color: #888; display: none; }
 
         footer {
             text-align: center;
@@ -251,7 +187,7 @@
             background: rgba(255,255,255,0.5);
             margin-top: 40px;
         }
-
+        
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
             .hero img { height: 200px; }
@@ -264,8 +200,6 @@
         <div class="header-icon">🎧</div>
         <h1>私の希望のプレイリスト</h1>
         <div class="subtitle">統合失調症との闘いを支えた音楽たち</div>
-        <div class="deco" style="top: 20px; left: 10%; font-size: 20px;">✨</div>
-        <div class="deco" style="top: 50px; right: 15%; font-size: 24px;">✨</div>
     </header>
 
     <div class="hero">
@@ -274,7 +208,6 @@
             あなたは一人じゃない。<br>
             これらの歌が私に勇気を与えてくれた。
         </div>
-        <div class="deco" style="top: -20px; right: -10px;">🕊️</div>
     </div>
 
     <div class="post-section">
@@ -297,14 +230,14 @@
                 <label>ひとこと・思い出</label>
                 <textarea id="comment" rows="3" placeholder="辛いときにこの歌詞に救われました...など" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">投稿する</button>
+            <button type="submit" class="submit-btn" id="submitBtn">投稿する</button>
         </form>
     </div>
 
     <div class="playlist-container">
-        <h2 class="section-title">勇気をくれた曲たち</h2>
-        <div id="grid" class="grid">
-            </div>
+        <h2 class="section-title">みんなの勇気の曲</h2>
+        <div id="loadingMsg">読み込み中... 🕊️</div>
+        <div id="grid" class="grid"></div>
     </div>
 
     <footer>
@@ -312,32 +245,33 @@
         © 2025 Harmonia. All rights reserved.
     </footer>
 
-    <script>
-        // --- JavaScript: ロジック設定 ---
+    <script type="module">
+        // Firebaseの機能をインポート
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // サンプルデータ (3サービス分)
-        const initialSongs = [
-            {
-                title: "Alone",
-                artist: "Marshmello",
-                url: "https://open.spotify.com/track/3MEYFivt6bilQ9q9mFWZ4g?si=s9342JaMTRmereu4UyVbJw", // Spotify
-                comment: "自分は一人じゃないんだと感じさせられた曲です。辛い時に何度も聴いて勇気をもらいました。"
-            },
-            {
-                title: "Not too Bad",
-                artist: "DJ? Foy",
-                url: "https://music.apple.com/jp/album/not-too-bad-single/1850710505", // Apple Music
-                comment: "人生7割上手くいかんけど、あとの3割えぐいという歌詞に勇気を持てました口に出して言う勇気。自分の殻を破る勇気。"
-            },
-            {
-                title: "心歌",
-                artist: "薬師寺 寛邦",
-                url: "https://music.youtube.com/watch?v=nOmp9fekHYE&si=pvIfdzV7awNH6axB", // YouTube Music
-                comment: "落ち着いたリズムで「共にまた歩き出そう」という歌詞に涙が出ました。"
-            }
-        ];
+        // ------------------------------------------------------------------
+        // 【重要】ここにFirebaseコンソールからコピーした設定を貼り付けてください
+        // ------------------------------------------------------------------
+        const firebaseConfig = {
+            apiKey: "AIzaSyC78I9Hr100hVL-TiPwNkM-55dZ-1ZvFB0",
+            authDomain: "harmonia-music-share.firebaseapp.com",
+            projectId: "harmonia-music-share",
+            storageBucket: "harmonia-music-share.firebasestorage.app",
+            messagingSenderId: "144347642934",
+            appId: "1:144347642934:web:57e2baa8cfc274c326ec97",
+            measurementId: "G-22RDV9G01P"
+        };
+        // ------------------------------------------------------------------
 
-        // 1. サービス判定関数
+        // Firebaseの初期化
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const COLLECTION_NAME = "songs"; // データベース内の保存場所名
+
+        // ------------------------------------------------------------------
+        // URL判別ロジック
+        // ------------------------------------------------------------------
         function detectService(url) {
             if (url.includes('spotify.com')) return 'spotify';
             if (url.includes('music.apple.com')) return 'apple';
@@ -345,98 +279,145 @@
             return null;
         }
 
-        // 2. 埋め込み用URL生成関数
         function getEmbedUrl(url) {
             const service = detectService(url);
-            
+            if (!service) return null;
+
             if (service === 'spotify') {
-                // Spotify: トラックIDを抽出して埋め込みURLを生成
                 const match = url.match(/track\/([a-zA-Z0-9]+)/);
                 if (match) return `https://open.spotify.com/embed/track/${match[1]}?utm_source=generator`;
-
             } else if (service === 'apple') {
-                // Apple Music: ドメインを embed.music.apple.com に置換
                 return url.replace('music.apple.com', 'embed.music.apple.com');
-
             } else if (service === 'youtube') {
-                // YouTube: 動画IDを抽出して埋め込みURLを生成
-                // (通常のURL, 短縮URL, YouTube MusicのURLに対応する正規表現)
                 const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
                 if(match) return `https://www.youtube.com/embed/${match[1]}`;
             }
-            return null; // 対応していないURLの場合
+            return null;
         }
 
-        // 3. カードHTML生成関数
+        // ------------------------------------------------------------------
+        // 表示ロジック
+        // ------------------------------------------------------------------
         function createCard(song) {
             const embedSrc = getEmbedUrl(song.url);
             const service = detectService(song.url);
             
-            // アイコンの出し分け
             let iconHtml = '';
-            if (service === 'spotify') {
-                iconHtml = '<div class="service-badge service-spotify"><i class="fab fa-spotify"></i></div>';
-            } else if (service === 'apple') {
-                iconHtml = '<div class="service-badge service-apple"><i class="fab fa-apple"></i></div>';
-            } else if (service === 'youtube') {
-                iconHtml = '<div class="service-badge service-youtube"><i class="fab fa-youtube"></i></div>';
-            }
+            if (service === 'spotify') iconHtml = '<div class="service-badge service-spotify"><i class="fab fa-spotify"></i></div>';
+            else if (service === 'apple') iconHtml = '<div class="service-badge service-apple"><i class="fab fa-apple"></i></div>';
+            else if (service === 'youtube') iconHtml = '<div class="service-badge service-youtube"><i class="fab fa-youtube"></i></div>';
+
+            // HTMLのエスケープ処理（セキュリティ対策）
+            const safeTitle = escapeHtml(song.title);
+            const safeArtist = escapeHtml(song.artist);
+            const safeComment = escapeHtml(song.comment);
 
             return `
                 <div class="card">
                     ${iconHtml}
                     <div class="card-iframe-container">
                         ${embedSrc 
-                            ? `<iframe src="${embedSrc}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>` 
+                            ? `<iframe src="${embedSrc}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` 
                             : '<div style="padding:40px; text-align:center; color:#888;">Preview Unavailable</div>'}
                     </div>
                     <div class="card-content">
-                        <div class="card-title">${song.title}</div>
-                        <div class="card-artist">${song.artist}</div>
-                        <div class="card-comment">${song.comment}</div>
+                        <div class="card-title">${safeTitle}</div>
+                        <div class="card-artist">${safeArtist}</div>
+                        <div class="card-comment">${safeComment}</div>
                     </div>
                 </div>
             `;
         }
 
-        // 4. 描画関数
-        function renderSongs() {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = ''; 
-            const storedSongs = JSON.parse(localStorage.getItem('myHopeSongs')) || initialSongs;
-            storedSongs.forEach(song => {
-                grid.innerHTML += createCard(song);
+        function escapeHtml(str) {
+            if(!str) return "";
+            return str.replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
             });
         }
 
-        // 5. 投稿フォーム処理
-        document.getElementById('songForm').addEventListener('submit', function(e) {
+        // ------------------------------------------------------------------
+        // データ読み込み・書き込み
+        // ------------------------------------------------------------------
+        
+        // データの読み込み関数
+        async function fetchSongs() {
+            const grid = document.getElementById('grid');
+            const loading = document.getElementById('loadingMsg');
+            
+            grid.innerHTML = '';
+            loading.style.display = 'block';
+
+            try {
+                // 日付が新しい順に取得
+                const q = query(collection(db, COLLECTION_NAME), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                loading.style.display = 'none';
+
+                if (querySnapshot.empty) {
+                    grid.innerHTML = '<p style="text-align:center; width:100%;">まだ投稿がありません。一番乗りで投稿してみませんか？🕊️</p>';
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    grid.innerHTML += createCard(data);
+                });
+
+            } catch (error) {
+                console.error("Error getting documents: ", error);
+                loading.style.display = 'none';
+                grid.innerHTML = '<p style="text-align:center; color:red;">読み込みに失敗しました。Firebaseの設定（テストモードなど）を確認してください。</p>';
+            }
+        }
+
+        // 投稿ボタンの処理
+        const form = document.getElementById('songForm');
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            const submitBtn = document.getElementById('submitBtn');
             const title = document.getElementById('title').value;
             const artist = document.getElementById('artist').value;
             const url = document.getElementById('url').value;
             const comment = document.getElementById('comment').value;
 
-            // バリデーション: 対応サービスかチェック
-            const service = detectService(url);
-            if (!service) {
-                alert('Spotify, Apple Music, または YouTube の正しい共有URLを入力してください。');
+            // バリデーション
+            if (!detectService(url)) {
+                alert('Spotify, Apple Music, YouTube のいずれかのURLを入力してください。');
                 return;
             }
 
-            const newSong = { title, artist, url, comment };
-            const currentSongs = JSON.parse(localStorage.getItem('myHopeSongs')) || initialSongs;
-            currentSongs.unshift(newSong);
-            localStorage.setItem('myHopeSongs', JSON.stringify(currentSongs));
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "送信中...";
 
-            this.reset();
-            renderSongs();
-            alert('投稿しました！あなたの勇気が誰かに届きますように。');
+                // Firestoreに保存
+                await addDoc(collection(db, COLLECTION_NAME), {
+                    title: title,
+                    artist: artist,
+                    url: url,
+                    comment: comment,
+                    createdAt: serverTimestamp() // サーバー時間を記録
+                });
+
+                form.reset();
+                alert('投稿しました！共有ありがとうございます。');
+                fetchSongs(); // リストを再読み込み
+
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("投稿に失敗しました。エラー: " + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "投稿する";
+            }
         });
 
-        // 初回描画
-        renderSongs();
+        // 初回読み込み
+        fetchSongs();
+
     </script>
 </body>
 </html>
